@@ -5,9 +5,12 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
 import * as iam from 'aws-cdk-lib/aws-iam';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 
 export interface StorageProps {
   bucketName: string;
+  domainName?: string;
+  certificate?: acm.ICertificate;
 }
 
 export class Storage extends Construct {
@@ -49,14 +52,19 @@ export class Storage extends Construct {
     // Create CloudFront distribution
     this.distribution = new cloudfront.Distribution(this, 'WebDistribution', {
       defaultBehavior: {
-        origin: new origins.S3Origin(this.bucket, {
-          originAccessIdentity,
+        origin: new origins.OriginGroup({
+          primaryOrigin: origins.S3BucketOrigin.withOriginAccessControl(
+            this.bucket,
+          ),
+          fallbackOrigin: new origins.HttpOrigin('www.example.com'),
         }),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
         allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD,
         cachedMethods: cloudfront.CachedMethods.CACHE_GET_HEAD,
       },
+      domainNames: props.domainName ? [props.domainName] : undefined,
+      certificate: props.certificate,
       defaultRootObject: 'index.html',
       errorResponses: [
         {
