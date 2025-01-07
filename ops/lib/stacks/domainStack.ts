@@ -6,7 +6,6 @@ import { Dns } from '../constructs/dns';
 
 export interface DomainStackProps extends cdk.StackProps {
   domainName: string;
-
   distribution: cloudfront.IDistribution;
 }
 

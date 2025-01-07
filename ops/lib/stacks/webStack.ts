@@ -29,6 +29,7 @@ export class WebStack extends cdk.Stack {
       certificate: certificate,
     });
 
+    // used later in domain setup
     this.distribution = storage.distribution;
 
     // Export S3 bucket name

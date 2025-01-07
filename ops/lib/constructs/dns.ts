@@ -9,8 +9,8 @@ export interface DnsProps {
 }
 
 export class Dns extends Construct {
-  public readonly hostedZone: route53.IHostedZone;
   public readonly domainName: string;
+  public readonly hostedZone: route53.IHostedZone;
 
   constructor(scope: Construct, id: string, props: DnsProps) {
     super(scope, id);
@@ -19,9 +19,10 @@ export class Dns extends Construct {
 
     // Create or import hosted zone
     this.hostedZone = new route53.PublicHostedZone(this, 'HostedZone', {
-      zoneName: props.domainName,
+      zoneName: this.domainName,
     });
 
+    // Create DNS - A Record
     new route53.ARecord(this, 'AliasRecord', {
       zone: this.hostedZone,
       target: route53.RecordTarget.fromAlias(

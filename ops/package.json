@@ -5,7 +5,19 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "clean": "rm -rf cdk.out && npx rimraf -g './bin/**/*.js' './bin/**/*.d.ts' './lib/**/*.js' './lib/**/*.d.ts' './test/**/*.js' './test/**/*.d.ts'",
+    "clean-build": "npm run clean && npm run build",
+    "cert:prepare": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk bootstrap -- --app 'npx ts-node bin/certApp.ts' --bootstrap-bucket-name 'rocky-jaiswal-todo-pro-xyz-cdk-assets'",
+    "cert:deploy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk deploy -- --app 'npx ts-node bin/certApp.ts'",
+    "cert:destroy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk destroy -- --app 'npx ts-node bin/certApp.ts'",
+    "web:prepare": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk bootstrap -- --app 'npx ts-node bin/webApp.ts'",
+    "web:deploy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk diff -- --app 'npx ts-node bin/webApp.ts' '*'",
+    "web:destroy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk destroy -- --app 'npx ts-node bin/webApp.ts' '*'"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.174.0",
+    "constructs": "^10.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
@@ -13,13 +25,10 @@
     "aws-cdk": "2.174.0",
     "jest": "^29.7.0",
     "prettier": "^3.4.2",
+    "rimraf": "^6.0.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "~5.6.3"
-  },
-  "dependencies": {
-    "aws-cdk-lib": "2.174.0",
-    "constructs": "^10.0.0"
   },
   "prettier": {
     "singleQuote": true
