@@ -17,7 +17,7 @@ Steps -
 5. Note the certificate ARN output
 6. Set env. var `CERT_ARN` to the ARN to the one noted above however you want
 7. Then prepare + execute the other stack in eu-central-1, which creates the S3 bucket, CloudFront distribution & DNS Zone
-8. The CDN distribution will use the certificate created earlier. We also add "A Record" in the DNS created with the distribution.
+8. The CDN distribution will use the certificate created earlier. We also add "A Record" in the DNS created with the distribution
 9. After all is complete, update the nameservers on your domain name provider (e.g. name.com) to the AWS Route53 zone nameservers
 
 
