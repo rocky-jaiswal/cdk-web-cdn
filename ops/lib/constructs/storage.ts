@@ -9,8 +9,8 @@ import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 
 export interface StorageProps {
   bucketName: string;
-  domainName?: string;
-  certificate?: acm.ICertificate;
+  domainName: string;
+  certificate: acm.ICertificate;
 }
 
 export class Storage extends Construct {
@@ -63,7 +63,7 @@ export class Storage extends Construct {
         allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD,
         cachedMethods: cloudfront.CachedMethods.CACHE_GET_HEAD,
       },
-      domainNames: props.domainName ? [props.domainName] : undefined,
+      domainNames: [props.domainName],
       certificate: props.certificate,
       defaultRootObject: 'index.html',
       errorResponses: [

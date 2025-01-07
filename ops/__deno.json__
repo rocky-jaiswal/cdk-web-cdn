@@ -1,0 +1,13 @@
+{
+  "tasks": {
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "aws-cdk": "npm:aws-cdk@2.174.0",
+    "aws-cdk-lib": "npm:aws-cdk-lib@2.174.0",
+    "constructs": "npm:constructs@^10.0.0"
+  },
+  "fmt": {
+    "singleQuote": true
+  }
+}

@@ -3,10 +3,10 @@
 
 1. Buy a domain from name.com (for example)
 2. In the domain setting forward email - admin@domain.com to your email account
-3. First create a Stack which creates a DNS Zone & ACM certificate in us-east-1
+3. First create a Stack which creates a ACM certificate in us-east-1
 4. Approve the domain name email you get so the certificate is validated
-5. Then execute the other stack in eu-central-1, which creates the S3 bucket and CloudFront distribution
-6. The CDN distribution should use the domain and certificate created earlier. Update "A Record" for the DNS created in step 2.
+5. Then execute the other stack in eu-central-1, which creates the S3 bucket, CloudFront distribution & DNS Zone
+6. The CDN distribution should use the certificate created earlier. We add "A Record" for the DNS created with the distribution.
 7. After all is complete, update the nameservers on your domain name provider (e.g. name.com) to the AWS Route53 zone nameservers
 
 # Syncing S3 bucket

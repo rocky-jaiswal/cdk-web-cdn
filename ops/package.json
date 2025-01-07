@@ -1,9 +1,6 @@
 {
   "name": "ops",
   "version": "0.1.0",
-  "bin": {
-    "ops": "bin/ops.js"
-  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
