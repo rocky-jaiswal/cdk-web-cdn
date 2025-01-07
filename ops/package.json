@@ -12,7 +12,7 @@
     "cert:deploy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk deploy -- --app 'npx ts-node bin/certApp.ts'",
     "cert:destroy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk destroy -- --app 'npx ts-node bin/certApp.ts'",
     "web:prepare": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk bootstrap -- --app 'npx ts-node bin/webApp.ts'",
-    "web:deploy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk diff -- --app 'npx ts-node bin/webApp.ts' '*'",
+    "web:deploy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk deploy -- --app 'npx ts-node bin/webApp.ts' '*'",
     "web:destroy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk destroy -- --app 'npx ts-node bin/webApp.ts' '*'"
   },
   "dependencies": {
