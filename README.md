@@ -13,7 +13,7 @@ Steps -
 1. Buy a domain from name.com (for example)
 2. In the domain setting forward email - admin@domain.com to your email account
 3. First create a Stack which creates a ACM certificate in us-east-1 (See `ops/package.json` for commands)
-4. Approve the domain name email you get so the certificate is validated
+4. Approve the domain name email you get so that the certificate is validated
 5. Note the certificate ARN output
 6. Set env. var `CERT_ARN` to the ARN to the one noted above however you want
 7. Then prepare + execute the other stack in eu-central-1, which creates the S3 bucket, CloudFront distribution & DNS Zone
@@ -27,6 +27,7 @@ Steps -
 - In `web` we have the web application code
 - After infra is created, run -
   - `aws s3 sync ./web/dist/ s3://rocky-jaiswal-todopro-xyz-web-assets-bucket` This will add assets to S3 and serve it via CDN
+- TODO: Create "Invalidation" so that the CDN cache is invalidated
 
 
 ## User Management
