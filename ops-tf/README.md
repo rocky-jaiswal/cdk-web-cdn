@@ -2,7 +2,7 @@
 
 - Make sure you are logged in AWS with the right role / user
 - Inside `py` directory run - `uv run main.py -a setup`
-    - This will setup S3 bucket and DynamoDB table for storing S3 state
+    - This will setup S3 bucket and DynamoDB table for storing TF state
 - Inside `tf` directory, run -
     - `tofu init`
     - `tofu plan`
