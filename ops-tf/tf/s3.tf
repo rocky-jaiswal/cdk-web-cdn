@@ -24,7 +24,6 @@ resource "aws_s3_bucket_ownership_controls" "site_bucket_ownership" {
   }
 }
 
-
 resource "aws_s3_bucket_public_access_block" "site_bucket_public_access" {
   bucket = aws_s3_bucket.site_bucket.id
 

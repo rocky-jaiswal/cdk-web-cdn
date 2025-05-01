@@ -12,7 +12,7 @@ terraform {
 
   backend "s3" {
     bucket         = "my-cool-app-xyz-terraform-state-bucket-01-05-2025"
-    key            = "terraform.tfstate"
+    key            = "terraform-${var.project_name}-${var.environment}.tfstate"
     region         = var.aws_region_eu
     dynamodb_table = "my-cool-app-xyz-terraform-state-lock-table"
     encrypt        = true

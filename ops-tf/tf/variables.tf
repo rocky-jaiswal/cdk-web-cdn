@@ -2,7 +2,7 @@ variable "aws_region_us" {
   description = "AWS region where resources will be created."
   type        = string
   default     = "us-east-1" # CloudFront is global, but some resources like ACM certs for CF must be in us-east-1
-                            # S3 bucket can be in another region if preferred.
+  # S3 bucket can be in another region if preferred.
 }
 
 variable "aws_region_eu" {
