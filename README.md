@@ -1,8 +1,8 @@
 # Static web hosted on AWS S3 + CDN with HTTPS & custom domain name
 
-## Commands
+## CDK and TF
 
-All commands are in `ops/package.json`
+The setup is in 2 flavors - AWS CDK & Terraform (OpenTofu). This is for learning / experimentation purposes.
 
 ## Setup
 
