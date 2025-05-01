@@ -9,9 +9,11 @@
     "clean": "rm -rf cdk.out && npx rimraf -g './bin/**/*.js' './bin/**/*.d.ts' './lib/**/*.js' './lib/**/*.d.ts' './test/**/*.js' './test/**/*.d.ts'",
     "clean-build": "npm run clean && npm run build",
     "cert:prepare": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk bootstrap -- --app 'npx ts-node bin/certApp.ts' --bootstrap-bucket-name 'rocky-jaiswal-todo-pro-xyz-cdk-assets'",
+    "cert:diff": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk diff -- --app 'npx ts-node bin/certApp.ts'",
     "cert:deploy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk deploy -- --app 'npx ts-node bin/certApp.ts'",
     "cert:destroy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/certApp.ts' && npm run cdk destroy -- --app 'npx ts-node bin/certApp.ts'",
     "web:prepare": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk bootstrap -- --app 'npx ts-node bin/webApp.ts'",
+    "web:diff": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk diff -- --app 'npx ts-node bin/webApp.ts' '*'",
     "web:deploy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk deploy -- --app 'npx ts-node bin/webApp.ts' '*'",
     "web:destroy": "npm run clean-build && npm run cdk synth -- --app 'npx ts-node bin/webApp.ts' && npm run cdk destroy -- --app 'npx ts-node bin/webApp.ts' '*'"
   },
