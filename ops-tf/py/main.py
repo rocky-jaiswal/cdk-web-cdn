@@ -33,7 +33,7 @@ def main():
         SetupTFState().setup()
 
     if args.action == "teardown":
-        print("todo ...")
+        SetupTFState().teardown()
 
 
 if __name__ == "__main__":

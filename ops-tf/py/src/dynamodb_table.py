@@ -1,7 +1,7 @@
 import boto3
 import botocore.exceptions
 
-TABLE_NAME = "my-cool-app-xyz-terraform-state-lock-table"
+TABLE_NAME = "my-cool-app-xyz-terraform-state-lock-table-02-05-2025"
 AWS_REGION = "eu-central-1"
 
 

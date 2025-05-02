@@ -1,8 +1,7 @@
 variable "aws_region_us" {
   description = "AWS region where resources will be created."
   type        = string
-  default     = "us-east-1" # CloudFront is global, but some resources like ACM certs for CF must be in us-east-1
-  # S3 bucket can be in another region if preferred.
+  default     = "us-east-1"
 }
 
 variable "aws_region_eu" {
@@ -23,6 +22,19 @@ variable "environment" {
   default     = "dev"
 }
 
+variable "custom_domain_name" {
+  description = "Domain name for the CloudFront distribution (e.g., www.example.com)."
+  type        = string
+  default     = "my-cool-app.xyz"
+}
+
+variable "acm_certificate_arn" {
+  description = "Optional: ARN of the ACM certificate (must be in us-east-1 for CloudFront)."
+  type        = string
+  # Set this
+  default = "arn:aws:acm:us-east-1:750324395434:certificate/98f51d9f-8746-40a2-bee0-a738382eb2cf"
+}
+
 variable "tags" {
   description = "Common tags to apply to all taggable resources."
   type        = map(string)
@@ -32,16 +44,3 @@ variable "tags" {
     ManagedBy   = "Terraform"
   }
 }
-
-# --- Optional: For Custom Domain ---
-# variable "custom_domain_name" {
-#   description = "Optional: Custom domain name for the CloudFront distribution (e.g., www.example.com)."
-#   type        = string
-#   default     = "my-cool-app-xyz"
-# }
-
-# variable "acm_certificate_arn" {
-#   description = "Optional: ARN of the ACM certificate (must be in us-east-1 for CloudFront)."
-#   type        = string
-#   default     = null # Set the ARN here if using a custom domain with HTTPS
-# }

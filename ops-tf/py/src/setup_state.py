@@ -8,6 +8,11 @@ class SetupTFState:
         S3Bucket().setup()
         DynamoDBTable().setup()
 
+    def teardown(self):
+        print("Tearing down state persistence ...")
+        S3Bucket().teardown()
+        DynamoDBTable().teardown()
+
 
 if __name__ == "__main__":
     SetupTFState().setup()

@@ -1,8 +1,15 @@
 # Python + OpenTofu (Terraform) Cloud Setup
 
 - Make sure you are logged in AWS with the right role / user
+- Inside `tf/certificate` directory, run -
+    - `tofu init`
+    - `tofu plan`
+    - `tofu apply`
+    - This will setup the AWS ARN Certificate backed by EMAIL verification
+        - This is a special step, since it needs to run only in us-east-1 region
+        - There is no remote state persisted for this since it is a single resource
 - Inside `py` directory run - `uv run main.py -a setup`
-    - This will setup S3 bucket and DynamoDB table for storing TF state
+    - This will setup S3 bucket and DynamoDB table for storing / managing TF state
 - Inside `tf` directory, run -
     - `tofu init`
     - `tofu plan`

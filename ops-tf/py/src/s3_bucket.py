@@ -3,7 +3,7 @@ import botocore.exceptions
 import time
 
 
-BUCKET_NAME = "my-cool-app-xyz-terraform-state-bucket-01-05-2025"
+BUCKET_NAME = "my-cool-app-xyz-terraform-state-bucket-02-05-2025"
 AWS_REGION = "eu-central-1"
 
 
