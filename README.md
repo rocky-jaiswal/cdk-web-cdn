@@ -4,11 +4,12 @@
 
 The setup is in 2 flavors - AWS CDK & Terraform (OpenTofu). This is for learning / experimentation purposes.
 
+- In `ops` directory we have the AWS CDK Setup
+- In `ops-tf` directory we have the OpenTofu / Terraform Setup
+
 
 ## Syncing S3 bucket
 
-- In `ops` directory we have the AWS CDK Setup
-- In `ops-tf` directory we have the OpenTofu / Terraform Setup
 - In `web` we have a simple / sample web application code
 - After infra is created, run -
   - `aws s3 sync ./web/dist/ s3://rocky-jaiswal-todopro-xyz-web-assets-bucket` This will add HTML assets to S3 and serve it via CDN
